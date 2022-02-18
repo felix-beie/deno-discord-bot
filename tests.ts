@@ -1,3 +1,3 @@
-import { runTests } from "./tests_deps.ts";
+import { runTests } from "./test_deps.ts";
 
 runTests();
