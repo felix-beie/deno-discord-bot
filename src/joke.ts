@@ -18,6 +18,22 @@ class Joke {
         }
     }
 
+    async fetchRandomJoke() {
+        try {
+            return soxa.get("https://v2.jokeapi.dev/joke/Any")
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    async fetchMeme() {
+        try {
+            return soxa.get("https://meme-api.herokuapp.com/gimme")
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
 }
 
 export {Joke}

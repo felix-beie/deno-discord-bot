@@ -32,4 +32,33 @@ class TellJoke extends Command {
     }
 }
 
-export {HelloCommand, TellChuckNorrisJoke, TellJoke}
+class TellRandomJoke extends Command {
+    name = "joke"
+    joke: Joke = new Joke()
+
+    execute(ctx: CommandContext) {
+        this.joke.fetchRandomJoke().then(function(val) {
+            if (val.data.type === "twopart") {
+                ctx.message.reply(val.data.setup)
+                ctx.message.reply(val.data.delivery)
+            }
+            else {
+                ctx.message.reply(val.data.joke)
+            }
+        })
+    }
+}
+
+class RandomMeme extends Command {
+    name = "meme"
+    joke: Joke = new Joke()
+
+    execute(ctx: CommandContext) {
+        this.joke.fetchMeme().then(function(val) {
+            console.log(val.data.url)
+            ctx.message.reply(val.data.url)
+        })
+    }
+}
+
+export {HelloCommand, TellChuckNorrisJoke, TellJoke, TellRandomJoke, RandomMeme}
